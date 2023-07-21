@@ -2,12 +2,6 @@
 
 provider "aws" {
     region = "ap-southeast-2"
-
-    assume_role {
-        role_arn = "arn:aws:iam::350357692482:role/GH-A"
-        session_name = "Cloud-Resume"
-        external_id = "WichaelMu@github"
-    }
 }
 
 terraform {
@@ -25,7 +19,5 @@ terraform {
         key = "terraform.tfstate"
         region = "ap-southeast-2"
         encrypt = true
-        # dynamodb_table = "terraform-locks"
-        # role_arn = "arn:aws:iam::350357692482:role/GH-A"
     }
 }
