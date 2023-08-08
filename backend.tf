@@ -20,6 +20,5 @@ terraform {
         region = "ap-southeast-2"
         encrypt = true
         # dynamodb_table = "terraform-locks"
-        role_arn = "arn:aws:iam::350357692482:role/GH-A"
     }
 }
