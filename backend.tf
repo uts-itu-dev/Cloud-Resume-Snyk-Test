@@ -15,9 +15,11 @@ terraform {
     }
 
     backend "s3" {
-        bucket = "arn:aws:s3:::terror-aws-mw-cloudresume"
+        bucket = "terror-aws-mw-cloudresume"
         key = "terraform.tfstate"
         region = "ap-southeast-2"
         encrypt = true
+        # dynamodb_table = "terraform-locks"
+        role_arn = "arn:aws:iam::350357692482:role/GH-A"
     }
 }
