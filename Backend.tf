@@ -15,7 +15,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket  = "terror-aws-mw-cloudresume.statebucket"
+    bucket  = "terror-aws-mw-cloudresume"
     key     = "terraform.tfstate"
     region  = "ap-southeast-2"
     encrypt = true
