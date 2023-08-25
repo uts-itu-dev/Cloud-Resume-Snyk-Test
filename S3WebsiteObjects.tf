@@ -1,17 +1,5 @@
 # S3 Bucket is defined in main.tf
 
-resource "aws_s3_bucket_website_configuration" "m" {
-  bucket = aws_s3_bucket.b.id
-
-  index_document {
-    suffix = "index.html"
-  }
-
-  error_document {
-    key = "error.html"
-  }
-}
-
 resource "aws_s3_object" "index" {
   bucket       = aws_s3_bucket.b.id
   key          = "index.html"
