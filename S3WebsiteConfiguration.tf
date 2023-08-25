@@ -25,5 +25,5 @@ resource "aws_s3_object" "error" {
   key          = "error.html"
   source       = "Source/error.html"
   etag         = filemd5("Source/error.html")
-  dontent_type = "text/html"
+  content_type = "text/html"
 }
