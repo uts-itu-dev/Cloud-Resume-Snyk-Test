@@ -33,10 +33,15 @@ resource "aws_cloudfront_distribution" "m" {
 
   viewer_certificate {
     acm_certificate_arn = aws_acm_certificate.m.arn
-    ssl_support_method = "sni-only"
+    ssl_support_method  = "sni-only"
   }
 }
 
 resource "aws_cloudfront_origin_access_identity" "m" {
   comment = "Used for MW CloudFront Origin Access Identity."
+}
+
+resource "aws_route53_record" "m-cf-www" {
+  zone_id = aws_cloudfront_distribution.m.hosted_zone_id
+  name    = "www.${var.R53DomainName}"
 }
