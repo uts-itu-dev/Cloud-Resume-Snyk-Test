@@ -1,8 +1,6 @@
 
 
 resource "aws_cloudfront_distribution" "m" {
-  provider = aws.virginia
-
   origin {
     domain_name = aws_s3_bucket.b.bucket_regional_domain_name
     origin_id   = "MW-CloudResume-CloudFront-Origin"
@@ -50,7 +48,7 @@ resource "aws_route53_record" "m-cf-www" {
   type = "A"
 
   alias {
-    name                   = var.R53DomainName
+    name                   = aws_cloudfront_distribution.m.domain_name
     zone_id                = aws_cloudfront_distribution.m.hosted_zone_id
     evaluate_target_health = false
   }
