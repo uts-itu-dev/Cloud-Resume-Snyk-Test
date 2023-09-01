@@ -40,9 +40,4 @@ resource "aws_route53_record" "m" {
   ttl             = 60
   type            = each.value.type
   zone_id         = data.aws_route53_zone.m.zone_id
-
-  tags = {
-    Name = "R53 for ${var.R53DomainName}."
-    Misc = "Made with Terraform."
-  }
 }
