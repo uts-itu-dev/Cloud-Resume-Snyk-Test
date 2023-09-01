@@ -3,7 +3,6 @@ module "acm" {
   version = "~> 4.0"
 
   domain_name = var.R53DomainName
-  zone_id     = var.ACMZoneID
 
   subject_alternative_names = [
     "*.${var.R53DomainName}",
