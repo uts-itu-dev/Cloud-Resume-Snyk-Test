@@ -53,3 +53,16 @@ resource "aws_route53_record" "m-cf-www" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "m-cf" {
+  zone_id = data.aws_route53_zone.m.zone_id
+  name    = "${var.R53DomainName}"
+
+  type = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.m.domain_name
+    zone_id                = aws_cloudfront_distribution.m.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
