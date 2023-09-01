@@ -1,7 +1,14 @@
 
 
+provider "aws" {
+  alias  = "virginia"
+  region = "us-east-1"
+}
+
 resource "aws_acm_certificate" "m" {
-  domain_name       = "${var.R53DomainName}"
+  provider = aws.virginia
+
+  domain_name       = var.R53DomainName
   validation_method = "DNS"
 
   subject_alternative_names = ["*.${var.R53DomainName}"]
