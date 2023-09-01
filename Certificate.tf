@@ -1,15 +1,16 @@
-module "acm" {
-  source  = "terraform-aws-modules/acm/aws"
-  version = "~> 4.0"
 
-  domain_name = var.R53DomainName
 
-  subject_alternative_names = [
-    "*.${var.R53DomainName}",
-  ]
+resource "aws_acm_certificate" "m" {
+  domain_name       = "${var.R53DomainName}"
+  validation_method = "DNS"
 
-  wait_for_validation = true
-  create_route53_records = true
+  subject_alternative_names = ["*.${var.R53DomainName}"]
+
+  key_algorithm = "RSA"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 
   tags = {
     Name = "Certificate for ${var.R53DomainName}.",
