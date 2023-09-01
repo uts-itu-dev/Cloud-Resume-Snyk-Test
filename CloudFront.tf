@@ -42,6 +42,14 @@ resource "aws_cloudfront_origin_access_identity" "m" {
 }
 
 resource "aws_route53_record" "m-cf-www" {
-  zone_id = aws_cloudfront_distribution.m.hosted_zone_id
-  name    = "www.${var.R53DomainName}"
+  zone_id = data.aws_route53_zone.m.zone_id
+  name = "www.${var.R53DomainName}"
+
+  type = "A"
+
+  alias {
+    name = "${var.R53DomainName}"
+    zone_id = aws_cloudfront_distribution.m.hosted_zone_id
+    evaluate_target_health = false
+  }
 }
