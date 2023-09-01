@@ -6,7 +6,7 @@ resource "aws_acm_certificate" "m" {
 
   subject_alternative_names = ["*.${var.R53DomainName}"]
 
-  key_algorithm = "RSA"
+  key_algorithm = "RSA_2048"
 
   lifecycle {
     create_before_destroy = true
