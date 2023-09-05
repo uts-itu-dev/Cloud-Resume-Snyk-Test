@@ -13,7 +13,7 @@ data "aws_iam_policy_document" "m-lambda" {
 }
 
 resource "aws_iam_role" "LambdaIAM" {
-  name               = "IAM for Lambda"
+  name               = "LambdaIAM"
   assume_role_policy = data.aws_iam_policy_document.m-lambda.json
 }
 
