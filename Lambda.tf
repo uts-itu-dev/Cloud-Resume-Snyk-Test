@@ -32,7 +32,7 @@ resource "aws_lambda_function" "m" {
   filename      = var.PayloadName
   role          = aws_iam_role.LambdaIAM.arn
 
-  source_code_hash = data.archive_file.lambda.output_base64sha256
+  source_code_hash = data.archive_file.Archive.output_base64sha256
 
   runtime = "python3.11"
 }
