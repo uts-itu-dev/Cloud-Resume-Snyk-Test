@@ -1,5 +1,5 @@
 
-data "aws_iam_policy_document" "m" {
+data "aws_iam_policy_document" "m-lambda" {
   statement {
     effect = "Allow"
 
@@ -14,7 +14,7 @@ data "aws_iam_policy_document" "m" {
 
 resource "aws_iam_role" "LambdaIAM" {
   name               = "IAM for Lambda"
-  assume_role_policy = data.aws_iam_policy_document.m.json
+  assume_role_policy = data.aws_iam_policy_document.m-lambda.json
 }
 
 variable "PayloadName" {
