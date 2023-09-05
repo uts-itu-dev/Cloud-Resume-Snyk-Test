@@ -21,7 +21,7 @@ variable "PayloadName" {
   default = "Payload.zip"
 }
 
-data "SourceArchive" "Archive" {
+data "archive_file" "Archive" {
   type        = "zip"
   source_file = "Source/Python/LambdaFunction.py"
   output_path = var.PayloadName
