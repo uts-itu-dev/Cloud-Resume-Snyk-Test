@@ -61,7 +61,7 @@ resource "aws_route53_record" "m-cf-www" {
 
 resource "aws_route53_record" "m-cf" {
   zone_id = data.aws_route53_zone.m.zone_id
-  name    = "${var.R53DomainName}"
+  name    = var.R53DomainName
 
   type = "A"
 
