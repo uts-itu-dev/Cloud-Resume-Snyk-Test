@@ -34,5 +34,5 @@ resource "aws_lambda_function" "m" {
 
   source_code_hash = data.archive_file.Archive.output_base64sha256
 
-  runtime = "python3.11"
+  runtime = "python3.9"
 }
