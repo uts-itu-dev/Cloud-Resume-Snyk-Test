@@ -8,7 +8,7 @@ data "aws_iam_policy_document" "m-lambda" {
       identifiers = ["lambda.amazonaws.com"]
     }
 
-    actions = ["sts:AssumeRole"]
+    actions = ["sts:AssumeRole", "dynamodb:*"]
   }
 }
 
