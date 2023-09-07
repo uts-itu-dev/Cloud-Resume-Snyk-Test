@@ -16,6 +16,7 @@ data "aws_iam_policy_document" "m-lambda-dynamodb" {
   statement {
     effect = "Allow"
     actions = ["dynamodb:*"]
+    resources = ["*"]
   }
 }
 
