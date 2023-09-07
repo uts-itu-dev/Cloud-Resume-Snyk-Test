@@ -25,7 +25,7 @@ resource "aws_iam_role" "LambdaIAM" {
   
   inline_policy {
     name = "Lambda-DynamoDB"
-    policy = aws_iam_policy_document.m-lambda-dynamodb.json
+    policy = data.aws_iam_policy_document.m-lambda-dynamodb.json
   }
 }
 
