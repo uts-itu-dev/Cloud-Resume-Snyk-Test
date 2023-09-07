@@ -1,15 +1,14 @@
 import json
 import boto3
 
-client = boto3.client("dynamodb")
+Client = boto3.client("dynamodb")
 TableName = "MW-Metrics"
 
 def Execute(event, context):
-    data = client.get_item(
+    Data = Client.get_item(
         TableName="MW-Metrics", Key={"VisitorMetric": {"S": "Visitor Metric Counter"}}
     )
 
-    prevViewCount = data["Item"]["Metric"]["N"]
-    print(prevViewCount)
+    Metric = Data["Item"]["Metric"]["N"]
 
-    return {"statusCode": 200, "body": data}
+    return { "statusCode": 200, "body": Metric }
