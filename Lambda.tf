@@ -8,13 +8,25 @@ data "aws_iam_policy_document" "m-lambda" {
       identifiers = ["lambda.amazonaws.com"]
     }
 
-    actions = ["sts:AssumeRole", "dynamodb:*"]
+    actions = ["sts:AssumeRole"]
+  }
+}
+
+data "aws_iam_policy_document" "m-lambda-dynamodb" {
+  statement {
+    effect = "Allow"
+    actions = ["dynamodb:*"]
   }
 }
 
 resource "aws_iam_role" "LambdaIAM" {
   name               = "LambdaIAM"
   assume_role_policy = data.aws_iam_policy_document.m-lambda.json
+  
+  inline_policy {
+    name = "Lambda-DynamoDB"
+    policy = aws_iam_policy_document.m-lambda-dynamodb.json
+  }
 }
 
 variable "PayloadName" {
