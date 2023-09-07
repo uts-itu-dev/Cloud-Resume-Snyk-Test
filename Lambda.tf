@@ -21,9 +21,17 @@ variable "PayloadName" {
   default = "Payload.zip"
 }
 
+variable "FileName" {
+  default = "LambdaFunction"
+}
+
+variable "Function" {
+  default = "Execute"
+}
+
 data "archive_file" "Archive" {
   type        = "zip"
-  source_file = "Source/Python/LambdaFunction.py"
+  source_file = "Source/Python/${var.FileName}.py"
   output_path = var.PayloadName
 }
 
@@ -34,6 +42,6 @@ resource "aws_lambda_function" "m" {
 
   source_code_hash = data.archive_file.Archive.output_base64sha256
 
-  handler = "LambdaFunction.py"
+  handler = "${var.FileName}.${var.Function}"
   runtime = "python3.9"
 }
