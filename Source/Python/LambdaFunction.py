@@ -6,10 +6,10 @@ TableName = "MW-Metrics"
 
 def Execute(event, context):
     data = client.get_item(
-        TableName="MW-Metrics", Key={"Visitor Metric Counter": {"N": "Metric"}}
+        TableName="MW-Metrics", Key={"VisitorMetric": {"S": "Visitor Metric Counter"}}
     )
 
-    prevViewCount = data["Item"]["Quantity"]["N"]
+    prevViewCount = data["Item"]["Metric"]["N"]
     print(prevViewCount)
 
     return {"statusCode": 200, "body": data}
