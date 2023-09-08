@@ -13,7 +13,7 @@ def Execute(event, context):
     response = Client.update_item(
         TableName="MW-Metrics",
         Key={"VisitorMetric": {"S": "Visitor Metric Counter"}},
-        UpdateExpression="ADD Quantity :inc",
+        UpdateExpression="ADD Metric :inc",
         ExpressionAttributeValues={":inc": {"N": "1"}},
         ReturnValues="UPDATED_NEW",
     )
