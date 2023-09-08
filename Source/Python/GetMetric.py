@@ -1,14 +1,23 @@
+################################################################################
+# Lambda Function to increment Visitor Metric in DynamoDB.
+################################################################################
+
 import json
 import boto3
 
 Client = boto3.client("dynamodb")
 TableName = "MW-Metrics"
 
+
 def Execute(event, context):
-    Data = Client.get_item(
-        TableName="MW-Metrics", Key={"VisitorMetric": {"S": "Visitor Metric Counter"}}
+    response = Client.update_item(
+        TableName="MW-Metrics",
+        Key={"VisitorMetric": {"S": "Visitor Metric Counter"}},
+        UpdateExpression="ADD Quantity :inc",
+        ExpressionAttributeValues={":inc": {"N": "1"}},
+        ReturnValues="UPDATED_NEW",
     )
 
-    Metric = Data["Item"]["Metric"]["N"]
+    RetVal = response["Attributes"]["Metric"]["N"]
 
-    return { "statusCode": 200, "body": Metric }
+    return {"statusCode": 200, "body": RetVal}
