@@ -60,6 +60,11 @@ resource "aws_lambda_function" "m" {
 }
 
 resource "aws_lambda_function_url" "m" {
-  function_name = aws_lambda_function.m.arn
+  function_name      = aws_lambda_function.m.arn
   authorization_type = "NONE"
+
+  cors {
+    allow_methods = ["GET", "POST"]
+    allow_origins = ["https://${var.R53DomainName}", "https://www.${var.R53DomainName}"]
+  }
 }
