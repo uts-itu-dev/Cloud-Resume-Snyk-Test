@@ -35,7 +35,7 @@ variable "PayloadName" {
 }
 
 variable "FileName" {
-  default = "LambdaFunction"
+  default = "GetMetric"
 }
 
 variable "Function" {
