@@ -15,3 +15,11 @@ resource "aws_s3_object" "error" {
   etag         = filemd5("Source/error.html")
   content_type = "text/html"
 }
+
+resource "aws_s3_object" "JavaScript" {
+  bucket       = aws_s3_bucket.b.id
+  key          = "error.html"
+  source       = "Source/error.html"
+  etag         = filemd5("Source/JavaScript/Metrics.js")
+  content_type = "text/javascript"
+}
