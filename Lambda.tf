@@ -14,8 +14,8 @@ data "aws_iam_policy_document" "m-lambda" {
 
 data "aws_iam_policy_document" "m-lambda-dynamodb" {
   statement {
-    effect = "Allow"
-    actions = ["dynamodb:*"]
+    effect    = "Allow"
+    actions   = ["dynamodb:*"]
     resources = ["*"]
   }
 }
@@ -23,9 +23,9 @@ data "aws_iam_policy_document" "m-lambda-dynamodb" {
 resource "aws_iam_role" "LambdaIAM" {
   name               = "LambdaIAM"
   assume_role_policy = data.aws_iam_policy_document.m-lambda.json
-  
+
   inline_policy {
-    name = "Lambda-DynamoDB"
+    name   = "Lambda-DynamoDB"
     policy = data.aws_iam_policy_document.m-lambda-dynamodb.json
   }
 }
@@ -57,4 +57,9 @@ resource "aws_lambda_function" "m" {
 
   handler = "${var.FileName}.${var.Function}"
   runtime = "python3.9"
+}
+
+resource "aws_lambda_function_url" "m" {
+  function_name = aws_lambda_function.m.arn
+  authorization_type = "NONE"
 }
