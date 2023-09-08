@@ -1,20 +1,22 @@
 
 
 let Metric = 0;
+let Current = 0;
 
 function Tick()
 {
-        if (Metric < 100)
+        if (Current < Metric)
         {
-                Metric += 1;
+                Current += 1;
                 requestAnimationFrame(Tick);
         }
 
-        document.getElementById("Metric").innerHTML = Metric;
+        document.getElementById("Metric").innerHTML = `You are visitor number: ${Current}`;
 }
 
-Tick();
-
 fetch("https://gzdq7cbc6alzn6lxxmbxpl2i5y0ihxsj.lambda-url.ap-southeast-2.on.aws/")
-  .then((response) => response.json())
-  .then((json) => console.log(json));
+        .then((Response) => Response.json())
+        .then((RetVal) => {
+                Metric = RetVal
+                Tick();
+        });
