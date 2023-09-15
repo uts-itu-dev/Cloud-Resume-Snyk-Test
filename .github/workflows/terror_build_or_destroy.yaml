@@ -22,8 +22,17 @@ jobs:
     if: inputs.action_type == 'destroy'
 
     steps:
-      - name: Destroy Infrastructure
-        run: terraform destroy -auto-approve
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@master
+      with:
+        role-to-assume: ${{ env.IAM_ROLE }}
+        aws-region: ${{ env.AWS_REGION }}
+        
+    - uses: actions/checkout@v2
+    - uses: hashicorp/setup-terraform@v2
+    
+    - name: Destroy Infrastructure
+      run: terraform destroy -auto-approve
         
   build:
     name: "Build"
