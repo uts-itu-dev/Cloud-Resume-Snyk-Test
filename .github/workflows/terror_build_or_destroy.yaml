@@ -15,9 +15,20 @@ permissions:
   contents: read
 
 jobs:
+  destroy:
+    name: "Destroy"
+    runs-on: ubuntu-latest
+    
+    if: inputs.action_type == 'destroy'
+
+    steps:
+      - name: Destroy Infrastructure
+        run: terraform destroy -auto-approve
+        
   build:
     name: "Build"
     runs-on: ubuntu-latest
+    
     if: inputs.action_type == 'build'
 
     steps:
