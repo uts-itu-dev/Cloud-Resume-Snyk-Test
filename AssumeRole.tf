@@ -21,3 +21,12 @@ resource "aws_iam_policy" "snyk" {
 }
     __TERMINATE__
 }
+
+resource "aws_iam_policy" "snyk-2" {
+  name   = "Policy-Snyk"
+  path   = "/"
+  policy = jsonencode({
+        actions = ["sts:AssumeRole"]
+        resources = ["*"]
+  })
+}
