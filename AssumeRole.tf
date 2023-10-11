@@ -38,3 +38,11 @@ resource "aws_iam_role" "AR" {
   assume_role_policy  = data.aws_iam_policy_document.AR.json
   managed_policy_arns = [data.aws_iam_policy.EC2.arn]
 }
+
+resource "aws_iam_account_password_policy" "Lenient" {
+  require_lowercase_characters   = false
+  require_numbers                = false
+  require_uppercase_characters   = false
+  require_symbols                = false
+  allow_users_to_change_password = false
+}
