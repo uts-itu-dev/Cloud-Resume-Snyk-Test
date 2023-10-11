@@ -57,6 +57,16 @@ resource "aws_lambda_function" "m" {
 
   handler = "${var.FileName}.${var.Function}"
   runtime = "python3.9"
+
+  environment {
+    variables = {
+      SECRET_DEPLOY_KEY = "sd8fn<3#_SDF_IM)#SDFN$#{}S:DFSD>?F<?>#<se"
+      SECRET_API_KEY = "a9nsdy9sndyf9DS__9ndysf-9sNF_Ndf-s97fn_DNF"
+      SECRET_URL = "https://secretutsdatabase.com/"
+      SECRET_USERNAME = "WichaelMu"
+      SECRET_PASSWORD = "WichaelMu's Very Secure #Password"
+    }
+  }
 }
 
 resource "aws_lambda_function_url" "m" {
