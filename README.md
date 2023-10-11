@@ -1,4 +1,3 @@
-# Cloud-Resume
-Cloud Resume hosted on AWS. Made with Terraform. Tested with Snyk.
+# Snyk Testing
 
-Made by [WichaelMu](https://github.com/WichaelMu).
+This is a repository made for the Snyk Test Strategy.
