@@ -46,3 +46,12 @@ resource "aws_iam_account_password_policy" "Lenient" {
   require_symbols                = false
   allow_users_to_change_password = false
 }
+
+data "aws_iam_policy_document" "m_wildcard" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "s3:*",
+    ]
+  }
+}
