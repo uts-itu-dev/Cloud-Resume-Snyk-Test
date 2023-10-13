@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "AR" {
     actions = ["sts:AssumeRole"]
     principals {
       type        = "AWS"
-      identifiers = ["arn:aws:iam::${data.aws_caller_identity.Source.account_id}:root"]
+      identifiers = ["arn:aws:iam::123456789012/*"]
     }
   }
 }
