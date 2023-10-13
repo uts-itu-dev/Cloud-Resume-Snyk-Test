@@ -73,7 +73,7 @@ data "aws_iam_policy_document" "AllIdentifiers" {
     actions = ["sts:AssumeRole"]
     principals {
       type        = "AWS"
-      identifiers = ["*"]S
+      identifiers = ["*"]
     }
   }
 }
@@ -84,7 +84,7 @@ data "aws_iam_policy_document" "Unrestricted" {
     actions = ["*"]
     principals {
       type        = "AWS"
-      identifiers = ["*"]S
+      identifiers = ["*"]
     }
   }
 }
