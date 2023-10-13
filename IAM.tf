@@ -55,3 +55,36 @@ data "aws_iam_policy_document" "m_wildcard" {
     ]
   }
 }
+
+data "aws_iam_policy_document" "AllActions" {
+  provider = aws.Destination
+  statement {
+    actions = ["*"]
+    principals {
+      type        = "AWS"
+      identifiers = ["arn:aws:iam::*"]S
+    }
+  }
+}
+
+data "aws_iam_policy_document" "AllIdentifiers" {
+  provider = aws.Destination
+  statement {
+    actions = ["sts:AssumeRole"]
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]S
+    }
+  }
+}
+
+data "aws_iam_policy_document" "Unrestricted" {
+  provider = aws.Destination
+  statement {
+    actions = ["*"]
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]S
+    }
+  }
+}
