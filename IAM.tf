@@ -62,7 +62,7 @@ data "aws_iam_policy_document" "AllActions" {
     actions = ["*"]
     principals {
       type        = "AWS"
-      identifiers = ["arn:aws:iam::*"]S
+      identifiers = ["arn:aws:iam::*"]
     }
   }
 }
