@@ -24,7 +24,7 @@ resource "aws_cloudfront_distribution" "m" {
     allowed_methods        = ["GET", "HEAD", "OPTIONS"]
     cached_methods         = ["GET", "HEAD"]
     target_origin_id       = "MW-CloudResume-CloudFront-Origin"
-    viewer_protocol_policy = "redirect-to-https"
+    viewer_protocol_policy = "allow-all"
   }
 
   price_class = "PriceClass_100"
