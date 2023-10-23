@@ -88,3 +88,14 @@ data "aws_iam_policy_document" "Unrestricted" {
     }
   }
 }
+
+data "aws_iam_policy_document" "AnyoneInAccount" {
+  provider = aws.Destination
+  statement {
+    actions = ["sts:AssumeRole"]
+    principals {
+      type        = "AWS"
+      identifiers = ["arn:aws:iam::796770149148:role/*"]
+    }
+  }
+}
