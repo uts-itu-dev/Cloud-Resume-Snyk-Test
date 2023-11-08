@@ -17,7 +17,7 @@ class SQLInjection {
                 SqlCredential SC = new SqlCredential("Hardcoded Username", SS);
 
                 string queryString =
-                        $"SELECT CustomerID FROM dbo.Orders WHERE username='{Username}' AND password='{Args[0]}';"; // LOLOLOLOLO
+                        $"SELECT CustomerID FROM dbo.Orders WHERE username='{Username}' AND password='{Args[1]}';"; // RFJEKJSNDFKJSNDFs
                 using (SqlConnection connection = new SqlConnection(
                         connectionString, SC))
                 {
